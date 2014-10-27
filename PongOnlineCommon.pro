@@ -36,7 +36,6 @@ HEADERS += \
     Sources/Message/Message/GameStarted/GameStarted.hpp \
     Sources/Message/Message/Delimiter/Delimiter.hpp \
     Sources/Message/MessageHeader/MessageHeader.hpp \
-    Sources/ServerInfo/ServerInfo.hpp \
     Sources/Message/MessageParser/MessageParser.hpp \
     Sources/FieldModel/FieldModel.hpp \
     Sources/SpriteModel/SpriteModel.hpp \
@@ -57,7 +56,6 @@ SOURCES += \
     Sources/Message/Message/StartGame/StartGame.cpp \
     Sources/Message/Message/GameStarted/GameStarted.cpp \
     Sources/Message/Message/Delimiter/Delimiter.cpp \
-    Sources/ServerInfo/ServerInfo.cpp \
     Sources/Message/MessageParser/MessageParser.cpp \
     Sources/FieldModel/FieldModel.cpp \
     Sources/SpriteModel/SpriteModel.cpp \

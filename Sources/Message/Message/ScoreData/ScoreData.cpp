@@ -10,8 +10,8 @@ ScoreData::ScoreData ( int playerScore , int enemyScore )
 
     // The rest of the message is a JSON object
     QJsonObject scoreJsonObject;
-    scoreJsonObject.insert("player",QString::number(playerScore));
-    scoreJsonObject.insert("enemy",QString::number(enemyScore));
+    scoreJsonObject.insert("player",playerScore);
+    scoreJsonObject.insert("enemy",enemyScore);
     QJsonDocument scoreJsonDocument(scoreJsonObject);
     QByteArray scoreJson(scoreJsonDocument.toJson());
     this->data.append(scoreJson);

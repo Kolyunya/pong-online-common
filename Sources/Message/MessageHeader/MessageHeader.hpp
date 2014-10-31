@@ -4,6 +4,8 @@
 enum MessageHeader
 {
 
+    DelimiterHeader,
+
     HandshakeHeader,
 
     HandshakeAckHeader,
@@ -18,9 +20,7 @@ enum MessageHeader
 
     FieldDataHeader,
 
-    ScoreDataHeader,
-
-    DelimiterHeader = 42
+    ScoreDataHeader
 
 };
 

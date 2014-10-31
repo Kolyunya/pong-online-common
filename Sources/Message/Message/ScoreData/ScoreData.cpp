@@ -1,18 +1,31 @@
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <Message/Message/ScoreData/ScoreData.hpp>
 
 ScoreData::ScoreData ( int playerScore , int enemyScore )
 {
+
+    // Initialize message header
     this->initializeData();
-    this->data.append(playerScore);
-    this->data.append(enemyScore);
+
+    // The rest of the message is a JSON object
+    QJsonObject scoreJsonObject;
+    scoreJsonObject.insert("player",QString::number(playerScore));
+    scoreJsonObject.insert("enemy",QString::number(enemyScore));
+    QJsonDocument scoreJsonDocument(scoreJsonObject);
+    QByteArray scoreJson(scoreJsonDocument.toJson());
+    this->data.append(scoreJson);
+
 }
 
 ScoreData::ScoreData ( const QByteArray& message )
 {
     this->initializeHeader();
     QByteArray messageBody = this->getBody(message);
-    this->playerScore = messageBody.at(0);
-    this->enemyScore = messageBody.at(1);
+    QJsonDocument messageJsonDocument = QJsonDocument::fromJson(messageBody);
+    QJsonObject messageJsonObject = messageJsonDocument.object();
+    this->playerScore = messageJsonObject.value("player").toInt();
+    this->enemyScore = messageJsonObject.value("enemy").toInt();
 }
 
 int ScoreData::getPlayerScore ( void ) const

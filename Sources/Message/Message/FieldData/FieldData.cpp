@@ -20,7 +20,7 @@ FieldData::FieldData(const QPointF& player, const QPointF& enemy, const QPointF&
     fieldDataJsonObject.insert("ball",FieldData::serializePoint(ball));
     fieldDataJsonObject.insert("timestamp",QDateTime::currentMSecsSinceEpoch());
     QJsonDocument fieldDataJsonDocument(fieldDataJsonObject);
-    QByteArray fieldDataJson(fieldDataJsonDocument.toBinaryData());
+    QByteArray fieldDataJson(fieldDataJsonDocument.toJson());
     this->data.append(fieldDataJson);
 
 }
@@ -35,7 +35,7 @@ FieldData::FieldData(const QByteArray& message)
     QByteArray messageBody = this->getBody(message);
 
     // Try to parse the message body
-    QJsonDocument messageJsonDocument = QJsonDocument::fromBinaryData(messageBody);
+    QJsonDocument messageJsonDocument = QJsonDocument::fromJson(messageBody);
     QJsonObject messageJsonObject = messageJsonDocument.object();
 
     // Check if the message has required properties

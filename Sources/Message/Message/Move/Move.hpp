@@ -14,6 +14,7 @@ class Move :
         MoveDirection getDirection ( void ) const;
     private:
         void initializeHeader ( void ) override;
+        void initializeBody ( void );
         MoveDirection direction;
 };
 

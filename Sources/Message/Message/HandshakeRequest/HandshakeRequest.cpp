@@ -15,7 +15,7 @@ HandshakeRequest::HandshakeRequest ( const QHostAddress& address , quint16 port 
     handshakeJsonObject.insert("address",address.toString());
     handshakeJsonObject.insert("port",port);
     QJsonDocument handshakeJsonDocument(handshakeJsonObject);
-    QByteArray handshakeJson(handshakeJsonDocument.toBinaryData());
+    QByteArray handshakeJson(handshakeJsonDocument.toJson());
     this->data.append(handshakeJson);
 
 }
@@ -30,7 +30,7 @@ HandshakeRequest::HandshakeRequest ( const QByteArray& message )
     QByteArray messageBody = this->getBody(message);
 
     // Try to parse the message body
-    QJsonDocument messageJsonDocument = QJsonDocument::fromBinaryData(messageBody);
+    QJsonDocument messageJsonDocument = QJsonDocument::fromJson(messageBody);
     QJsonObject messageJsonObject = messageJsonDocument.object();
 
     // Check if the message has required properties
